@@ -29,7 +29,7 @@ void opciones_severidad(){
 void logMessage(string mensaje, int NivelSeveridad){
     //usuario elige la opcion
     //lo que se seleccione se agrega al archivo log
-    ofstream logfile("Log.txt");
+    ofstream logfile("Log.txt", ios::app);
     if (!logfile){
         cerr<<"nos se puede abrir el archivo. \n";
         return;
@@ -57,7 +57,7 @@ void logMessage(string mensaje, int NivelSeveridad){
         cerr<< "NO es valido este nivel de severidad";
             return;
     }
-    logfile<<"[" <<nivel<< "]"<< mensaje <<"\n";
+    logfile<<"[" <<nivel<< "]<"<< mensaje <<">"<<"\n";
     logfile.close();
 }
 
@@ -66,21 +66,22 @@ int main(){
 
     int seleccion;
     char mensaje[256];
-    opciones_severidad();
+    for(int i=0; i<5; i++){
+        opciones_severidad();
 
-    cout<<"seleccione nivel de severidad: ";
-    scanf("%d", &seleccion);
-
-    while(seleccion< 1 || seleccion> 5){
-        cout<< "opcion invalida, intente denuevo:" ;//poner que intente nuevamente
+        cout<<"seleccione nivel de severidad: "; //que pasa si vuelvo a elegir el mismo ?
         scanf("%d", &seleccion);
-    }
 
-    cout<< "ingrese su mensaje; ";
-    scanf(" %[^\n]", mensaje);// ver que onda esto si lo puedo dejar asi para evadir el error
+        while(seleccion< 1 || seleccion> 5){
+            cout<< "opcion invalida, intente denuevo:" ;
+            scanf("%d", &seleccion);
+        }
 
-    logMessage(mensaje, seleccion);
+        cout<< "ingrese su mensaje: ";
+        scanf(" %[^\n]", mensaje);
 
+        logMessage(mensaje, seleccion); 
+}
     return 0;
 }
 

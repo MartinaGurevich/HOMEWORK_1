@@ -1,1 +1,13 @@
-[ERROR]soy martu 
+[CRITICAL]lll
+[DEBUG]lll
+[INFO]qqq
+[WARNING]bdcj
+[ERROR]jdcb
+[CRITICAL]lll
+[DEBUG]<aa>
+[DEBUG]<bbb>
+[DEBUG]<w>
+[INFO]<r>
+[WARNING]<f>
+[ERROR]<g>
+[CRITICAL]<k>
