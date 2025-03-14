@@ -78,7 +78,7 @@ int main(){
         }
 
         cout<< "ingrese su mensaje: ";
-        scanf(" %[^\n]", mensaje);
+        scanf(" %[^\n]", mensaje);//
 
         logMessage(mensaje, seleccion); 
 }
