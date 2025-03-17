@@ -11,3 +11,115 @@
 [WARNING]<f>
 [ERROR]<g>
 [CRITICAL]<k>
+[DEBUG]<hola>
+[INFO]<k>
+[WARNING]<l>
+[ERROR]<8>
+[CRITICAL]<listo>
+[DEBUG]<hola>
+[DEBUG]<chau>
+[MARTINA]<hola>
+[DEBUG]<j>
+[INFO]<ñ>
+[WARNING]<l>
+[ERROR]<w>
+[CRITICAL]<t>
+[ERROR]<h>
+[DEBUG]<l>
+[INFO]<l>
+[MARTINA]<l>
+[CRITICAL]<o>
+[WARNING]<l>
+[CRITICAL]<u>
+[DEBUG]<k>
+
+[ERROR]<error en escribir>
+<archivo: martu.cpp , linea: 46>
+[ERROR]<k>
+<Mensaje: kLinea: 6>
+[DEBUG]<hola>
+
+[ERROR]<error en hablar >
+<Mensaje: error en hablar Linea: 56>
+[DEBUG]<j>
+
+[ERROR]<hola>
+<Mensaje: holaLinea: 65>
+[ERROR]<AMPARO>
+<Mensaje: AMPAROLinea: 55>
+[ERROR]<MARTINA>
+< Archivo: martu.txt, Linea: 78>
+[ERROR]<error en tenr una amiga conmo ampi >
+<Archivo: 4togrado.txt, Linea: 2015>
+[ERROR]<j>
+<Archivo: j.txt, Linea: 44>[ERROR]<hola><Archivo: hola.txt, Linea: 58>[ERROR]<ñ>
+<Archivo: l, Linea: 54>[ERROR]<hola>
+<Archivo: .ccp, Linea: 8>
+[ERROR]<martu>
+<Archivo: martu.txt, Linea: 5>
+[SECURITY]<Access denied>
+< Nombre de usuario: >
+[SECURITY]<martina>
+< Nombre de usuario: >
+[SECURITY]<j>
+< Nombre de usuario: >
+[ERROR]<hoa>
+<Archivo: hoola.tct, Linea: 5>
+[ERROR]<}>
+<Archivo: , Linea: -1>
+[ERROR]<hola>
+<Archivo: hola.txt, Linea: 4>
+[ERROR]<hola>
+<Archivo: jola.tct, Linea: 8>
+[DEBUG]<chau>
+
+[SECURITY]<seguridad>
+< Nombre de usuario: >
+[SECURITY]<hola>
+< Nombre de usuario: >
+[SECURITY]<s>
+< Nombre de usuario: f>
+[SECURITY]<acces denied>
+< Nombre de usuario: martu.123>
+[DEBUG]<hola>
+
+[SECURITY]<hola>
+< Nombre de usuario: hola>
+[SECURITY]<h>
+< Nombre de usuario: j>
+[SECURITY]<hola >< Nombre de usuario: hola.com>
+[DEBUG]<c>
+[MARTINA]<q>
+[ERROR]<hola>- <Archivo: ckjfadbck, Linea: 55>
+[ERROR]<>- <Archivo: , Linea: -1>
+[SECURITY]<j>- < Nombre de usuario: w>
+[ERROR]<k> - <Archivo: ff, Linea: 5>
+[ERROR]<> - <Archivo: , Linea: -1>
+[SECURITY]<d> - < Nombre de usuario: ef>
+[ERROR]<h> - <Archivo: h, Linea: 3>
+[ERROR]<.> - <Archivo: , Linea: -1>
+[ERROR]<d> - <Archivo: g, Linea: 2>
+[ERROR]<> - <Archivo: , Linea: -1>
+[ERROR]<dd> - <Archivo: wd.lel, Linea: 2>
+[ERROR]<5> - <Archivo: , Linea: -1>
+[ERROR]<d> - <Archivo: e, Linea: 8>
+[ERROR]<> - <Archivo: , Linea: -1>
+[ERROR]<l>
+ - <Archivo: f, Linea: 6>
+[ERROR]<>
+ - <Archivo: , Linea: -1>
+[ERROR]<l> - <Archivo: o, Linea: 4>
+[ERROR]<> - <Archivo: , Linea: -1>
+[SECURITY]<Ñ> - < Nombre de usuario: P>
+[ERROR]<Ñ> - <Archivo: L, Linea: 9>
+[ERROR]<> - <Archivo: , Linea: -1>
+[ERROR]<f>
+<Archivo: j, Linea: 2>
+[ERROR]<>
+<Archivo: , Linea: -1>
+[ERROR]<f>
+<Archivo: e, Linea: 2>
+[SECURITY]<f>
+< Nombre de usuario: r>
+[ERROR]<forrro> - <Archivo: hola.txt, Linea: 3>
+[SECURITY]<access denied> - < Nombre de usuario: martinagurevcih2005>

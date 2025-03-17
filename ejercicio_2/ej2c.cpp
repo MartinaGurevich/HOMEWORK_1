@@ -29,7 +29,7 @@ void opciones_severidad(){
 
 }
 
-void logMessage(const string& mensaje, int NivelSeveridad,const string& archivo="", int linea_error= -1,const string& nombre_usuario="" ){
+void logMessage(const string& mensaje, int NivelSeveridad,const string& archivo="", int linea_error= -1 , const string& nombre_usuario=""){
     //usuario elige la opcion
     //lo que se seleccione se agrega al archivo log
     ofstream logfile("Log.txt", ios::app);
@@ -66,23 +66,23 @@ void logMessage(const string& mensaje, int NivelSeveridad,const string& archivo=
         cerr<< "NO es valido este nivel de severidad";
             return;
     }
-    logfile<<"[" <<nivel<< "]<"<< mensaje <<">" ;//<<"\n";
+    logfile<<"[" <<nivel<< "]<"<< mensaje <<">"<<"\n";
 
     if(NivelSeveridad==4){
-        logfile<< " - <Archivo: "<< archivo << ", Linea: "<< linea_error<<">";
+        logfile<< "<Archivo: "<< archivo << ", Linea: "<< linea_error<<">";
     }
     if(NivelSeveridad==7){
-        logfile<< " - < Nombre de usuario: "<< nombre_usuario<<">";
+        logfile<< "< Nombre de usuario: "<< nombre_usuario<<">";
     }
     logfile<< "\n"; //
     logfile.close();
 }
-//2b ii
 
 void log_message_error(string& mensaje, string& archivo, int& linea_codigo){
     
+    cin.ignore(); //no hay problemas para la proxima entrada  /////////
+
     cout<<"ingrese su mensaje: ";
-    cin.ignore(); //no hay problemas para la proxima entrada 
     getline(cin, mensaje);
 
     cout<<"ingrese el archivo donde ocurrio el error: ";
@@ -90,19 +90,20 @@ void log_message_error(string& mensaje, string& archivo, int& linea_codigo){
 
     cout<<"ingrese linea donde esta el error: ";
     cin >> linea_codigo;//es un int
-    
     cin.ignore();
 } 
+
 //2c
 void log_acceso_usuario(string& mensaje, string& nombre_usuario){
+    cin.ignore();////////////////////////////////////////
     cout<< "ingrese su mensaje de acceso: "; //pongo ingrese su mensaje de acceso ?
-    cin.ignore();
+    
     getline(cin, mensaje);
 
     cout<<"ingrese el nombre de usuario: ";
     getline(cin, nombre_usuario);
     
-    //cin.ignore(); 
+    //cin.ignore();
 }
 
 int main(){
@@ -129,21 +130,18 @@ int main(){
         }
         if(seleccion== 7){
             log_acceso_usuario(mensaje, usuario);
-            logMessage(mensaje, seleccion,archivo,linea_error, usuario); 
-            continue;//ESTA BIEN QUEPONGA TODOS LOS ARGUMNETSO ACA ?
+            logMessage(mensaje, seleccion,"",-1, usuario); 
+            continue;
         }
-
-        else{
-            cin.ignore();//
-            cout<< "ingrese su mensaje: ";
-            getline(cin,mensaje);
-            logMessage(mensaje, seleccion); //ME PASA QUE LOS ARGUMENTOS DE LA FUNCION SON MAS Y NO ME LEE CUANDO POMGO NI EL 4
+            else{
+                
+                cin.ignore();//
+                cout<< "ingrese su mensaje: ";
+                
+                getline(cin,mensaje);
+                logMessage(mensaje, seleccion);
             }
     }
     return 0;
-//FIJARSE PORQUE EN ERROR ME PIDE DOS VECES EL MENSAJE 
 
 }
-
-
-
