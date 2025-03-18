@@ -123,3 +123,6 @@
 < Nombre de usuario: r>
 [ERROR]<forrro> - <Archivo: hola.txt, Linea: 3>
 [SECURITY]<access denied> - < Nombre de usuario: martinagurevcih2005>
+[ERROR]<f> - <Archivo: t.txt, Linea: 5>
+[SECURITY]<acces denied> - < Nombre de usuario: martu>
+[CRITICAL]<hola>
