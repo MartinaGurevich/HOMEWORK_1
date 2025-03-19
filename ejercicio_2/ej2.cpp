@@ -6,7 +6,7 @@ using namespace std;
 
 //creo un archivo.  //dsp hago un switch.
 
-enum leyendas { DEBUG=1, INFO, WARNING, ERROR, CRITICAL, MARTINA, SECURITY}; //AGREGO MARTINA DE MANERA HARDCODEADA
+enum leyendas { DEBUG=1, INFO, WARNING, ERROR, CRITICAL, TEST, SECURITY}; //AGREGO MARTINA DE MANERA HARDCODEADA
 
 constexpr array<const char*,7> leyendasStrings = {
     "DEBUG",
@@ -14,7 +14,7 @@ constexpr array<const char*,7> leyendasStrings = {
     "WARNING", 
     "ERROR", 
     "CRITICAL",
-    "MARTINA",
+    "TEST",
     "SECURITY"
 
 };
@@ -56,8 +56,8 @@ void logMessage(const string& mensaje, int NivelSeveridad,const string& archivo=
         case CRITICAL:
             nivel="CRITICAL";
             break;
-        case MARTINA:
-            nivel="MARTINA";
+        case TEST:
+            nivel="TEST";
             break;
         case SECURITY:
             nivel="SECURITY";
@@ -110,35 +110,41 @@ int main(){
     string mensaje, archivo, usuario;
     int linea_error;
 
-    for(int i=0; i<leyendasStrings.size(); i++){
-        opciones_severidad();
+    while(true){
+        try{
+            opciones_severidad();
 
-        cout<<"seleccione nivel de severidad ( para salir 0 ): "; //que pasa si vuelvo a elegir el mismo ?
-        cin>> seleccion;
+            cout<<"seleccione nivel de severidad (para salir 0 ): "; //que pasa si vuelvo a elegir el mismo ?
+            cin>> seleccion; 
 
-        if(seleccion==0)break;
+            if(seleccion==0)break;
 
-        while(seleccion< 1 || seleccion> leyendasStrings.size()){
-            cout<< "opcion invalida, intente denuevo:" ;
-            cin>> seleccion;   
-        }
-        if (seleccion==4){
-            log_message_error(mensaje, archivo, linea_error);
-            logMessage(mensaje,seleccion, archivo, linea_error);
-            continue;
-        }
-        if(seleccion== 7){
-            log_acceso_usuario(mensaje, usuario);
-            logMessage(mensaje, seleccion,archivo,linea_error, usuario); 
-            continue;//ESTA BIEN QUEPONGA TODOS LOS ARGUMNETSO ACA ?
-        }
-
-        else{
-            cin.ignore();//
-            cout<< "ingrese su mensaje: ";
-            getline(cin,mensaje);
-            logMessage(mensaje, seleccion); //ME PASA QUE LOS ARGUMENTOS DE LA FUNCION SON MAS Y NO ME LEE CUANDO POMGO NI EL 4
+            while(seleccion< 1 || seleccion> leyendasStrings.size()){
+                throw invalid_argument("opcion invalida, intente denuevo:");
             }
+
+            if (seleccion==4){
+                log_message_error(mensaje, archivo, linea_error);
+                logMessage(mensaje,seleccion, archivo, linea_error);
+                continue;
+            }
+            if(seleccion== 7){
+                log_acceso_usuario(mensaje, usuario);
+                logMessage(mensaje, seleccion,archivo,linea_error, usuario); 
+                continue;//ESTA BIEN QUEPONGA TODOS LOS ARGUMNETSO ACA ?
+            }
+
+            else{
+                cin.ignore();//
+                cout<< "ingrese su mensaje: ";
+                getline(cin,mensaje);
+                logMessage(mensaje, seleccion); //ME PASA QUE LOS ARGUMENTOS DE LA FUNCION SON MAS Y NO ME LEE CUANDO POMGO NI EL 4
+            }
+        }
+        catch(invalid_argument &e){
+            cout << e.what();
+            cin.clear();
+        } 
     }
     return 0;
 }

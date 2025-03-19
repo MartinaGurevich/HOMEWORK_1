@@ -21,7 +21,6 @@ vector<vector<int>> matrix(int n){
     return matriz;
 }
 
-
 //1_b)
 void mayor_a_menor(vector<vector<int>> &matriz, int n){
     for (int i= n*n-1; i>=0 ; i--){

@@ -126,3 +126,15 @@
 [ERROR]<f> - <Archivo: t.txt, Linea: 5>
 [SECURITY]<acces denied> - < Nombre de usuario: martu>
 [CRITICAL]<hola>
+[MARTINA]<hola>
+[DEBUG]<hola>
+[DEBUG]<hola>
+[DEBUG]<hola>
+[DEBUG]<hola>
+[DEBUG]<hola>
+[DEBUG]<hola>
+[DEBUG]<hilh>
+[ERROR]<ij> - <Archivo: ca.txt, Linea: 10>
+[SECURITY]<kjclj> - < Nombre de usuario: a>
+[DEBUG]<HOLA>
+[ERROR]<hfj> - <Archivo: tsgav.xt, Linea: 1115>

@@ -56,6 +56,9 @@ long long tiempo_ejecucion_str(const string& texto1,const string& texto2, int in
     return elapsedTime.count();
 
 }
+
+
+
 int main ()
 {
     constexpr const char texto1_c[]="hola como estas yo mal , esta frase tiene al menos 64 caracteres para ver si es igual que la otra";
@@ -65,7 +68,7 @@ int main ()
     
     string texto1_s= texto1_c;
     string texto2_s= texto2_c;
-    long long tiempo_str= tiempo_ejecucion_str(texto1_s,texto2_s);
+    //long long tiempo_str= tiempo_ejecucion_str(texto1_s,texto2_s);
 
     // COMPARARCION CON char*
     //bool resultado_char= comparacion_recursiva_c(texto1_c, texto2_c); ERA CUADNO ESTABA USANDO LA FUNCION DE CHAR SOLO 
@@ -80,6 +83,27 @@ int main ()
     cout<< "No hay tiempo de ejecucion, el calculo se realiza en la compilacion del programa \n";
     //cout<< "tiempo de ejecucion con char: ["<< tiempo_char <<"] nanosegundos\n"<< endl;
 
+    auto startTime = chrono::high_resolution_clock::now();
+    comparacion_recursiva_s( texto1_s, texto2_s);
+    auto endTime = chrono::high_resolution_clock::now();
+    auto elapsedTime = chrono::duration_cast<std::chrono::nanoseconds>(endTime - startTime);
+    int tiempo = elapsedTime.count();
+    cout << "string " << tiempo << endl;
+
+    startTime = chrono::high_resolution_clock::now();
+    comparacion_recursiva_c( texto1_c, texto2_c);
+    endTime = chrono::high_resolution_clock::now();
+    elapsedTime = chrono::duration_cast<std::chrono::nanoseconds>(endTime - startTime);
+    tiempo = elapsedTime.count();
+    cout << "char " << tiempo << endl;
+
+
+    startTime = chrono::high_resolution_clock::now();
+    cout << "Tiempo en compilacion ";
+    endTime = chrono::high_resolution_clock::now();
+    elapsedTime = chrono::duration_cast<std::chrono::nanoseconds>(endTime - startTime);
+    tiempo = elapsedTime.count();
+    cout << "comp " << tiempo << endl;
 
 
     // COMPARARCION CON string
@@ -92,7 +116,7 @@ int main ()
     }else{
         cout<<"- Los textos son distintos. \n";
     }
-    cout<< "Tiempo de ejecucion con string: ["<< tiempo_str <<"] nanosegundos\n"<< endl;
+    //cout<< "Tiempo de ejecucion con string: ["<< tiempo_str <<"] nanosegundos\n"<< endl;
 
 
     return 0;
