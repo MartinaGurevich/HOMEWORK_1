@@ -168,3 +168,7 @@
 [CRITICAL]<j>
 [TEST]<u>
 [SECURITY]<h> - < Nombre de usuario: hhhh>
+[ERROR]<d> - <Archivo: d, Linea: 4>
+[SECURITY]<d> - < Nombre de usuario: d>
+[TEST]<d>
+[TEST]<d>
