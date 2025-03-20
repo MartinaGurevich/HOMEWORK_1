@@ -48,13 +48,6 @@ int main(){
     cin >> n;
 
     vector<vector<int >> matriz= matrix(n); 
-    
- //   for (const auto& fila : matriz){ 
-   //     for(int elemento: fila){
-     //       cout << elemento << " ";
-       // }
-        //cout<< endl;
-    //}
     mayor_a_menor(matriz,n);
 
     return 0;

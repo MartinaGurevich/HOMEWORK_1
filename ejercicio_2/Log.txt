@@ -138,3 +138,33 @@
 [SECURITY]<kjclj> - < Nombre de usuario: a>
 [DEBUG]<HOLA>
 [ERROR]<hfj> - <Archivo: tsgav.xt, Linea: 1115>
+[DEBUG]<hola>
+[TEST]<hola>
+[ERROR]<error> - <Archivo: jjdjd, Linea: 66>
+[SECURITY]<bdcjk> - < Nombre de usuario: ddd>
+[SECURITY]<l> - < Nombre de usuario: l>
+[ERROR]<ñ> - <Archivo: p, Linea: 54>
+[ERROR]<k> - <Archivo: l, Linea: 12>
+[SECURITY]<l> - < Nombre de usuario: ñ>
+[CRITICAL]<ñ>
+[ERROR]<hola> - <Archivo: hola.txt, Linea: 45>
+[SECURITY]<jj> - < Nombre de usuario: martu>
+[DEBUG]<chau>
+[INFO]<ggg>
+[WARNING]<gggg>
+[CRITICAL]<gggg>
+[TEST]<sjdfvbjsk>
+[CRITICAL]<ñ>
+[ERROR]<n> - <Archivo: f, Linea: 8>
+[ERROR]<f> - <Archivo: f, Linea: 0>
+[ERROR]<ñ> - <Archivo: f, Linea: 4>
+[SECURITY]<f> - < Nombre de usuario: f>
+[ERROR]<ññ> - <Archivo: ññ.txt, Linea: 0>
+[ERROR]<hola> - <Archivo: kols, Linea: 78>
+[ERROR]<HOLA> - <Archivo: HOLA.TXT, Linea: 52>
+[DEBUG]<h>
+[INFO]<j>
+[WARNING]<y>
+[CRITICAL]<j>
+[TEST]<u>
+[SECURITY]<h> - < Nombre de usuario: hhhh>
