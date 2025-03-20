@@ -9,7 +9,7 @@ using namespace std;
     El usuario puede seleccionar su nivel de severidad, escribir un mensaje y este se guardara en el archivo "Log.txt".
     - en caso de ERROR, el usuario ingresa el mesaje de error, en que archivo ocurrio y en que linea del mismo
     - En caso de SECURITY se ingresa el nombre de usuario. 
-    - Finalemnte si se ingresa un nivel invalido, el programa maneja el error y pide que lo ingrese nuevamente.
+    - Finalemente si se ingresa un nivel o argumento invalido, el programa maneja el error y pide que lo ingrese nuevamente.
 
 */
 enum leyendas { DEBUG=1, INFO, WARNING, ERROR, CRITICAL, TEST, SECURITY}; //defino los niveles de severidad con numero enteros y luego AGREGO TEST y SECURITY DE MANERA HARDCODEADA
@@ -142,12 +142,8 @@ int main(){
 
 
             if(seleccion==0)break;
-
-            //while(seleccion< 1 || seleccion> leyendasStrings.size()){
-            //    throw invalid_argument("¡OPCIÓN INVALIDA!. Intente nuevamente. \n"); //si el usuario no ingresa un int dentro del rango de las opciones, me marca un error.
-           // }
+            
             //casos ERROR y SECURITY.
-
             if (seleccion==4){
                 log_message_error(mensaje, archivo, linea_error);
                 logMessage(mensaje,seleccion, archivo, linea_error);

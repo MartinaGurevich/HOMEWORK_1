@@ -68,7 +68,7 @@ long long tiempo_ejecucion_str(const string& texto1,const string& texto2, int in
 int main ()
 {
     constexpr const char texto1_c[]="hola como estas yo mal , esta frase tiene al menos 64 caracteres para ver si es igual que la otra";
-    constexpr const char texto2_c[]="hola como estas yo mal , esta frase tiene al menos 64 caracteres para ver si es igual que la otra";
+    constexpr const char texto2_c[]="hola como estas yo bien , esta frase tiene al menos 64 caracteres para ver si es igual que la otra";
 
     constexpr bool resultado_char_compilacion= comparacion_recursiva_char (texto1_c,texto2_c); 
     
@@ -103,5 +103,6 @@ int main ()
 ejecucion de ambos difiere. El tiempo de ejecucion de la funcion tipo char* siempre es menor al tiempo de la funcion
 de tipo str. Esto sucede porque char* no tiene administarcion de memoria adicional ni metodos internos. 
 
-Como string es una clase, no se puede usar como constexpr. Entonces para modifiacar el codigo en tiempo de compilacion solo se puede usar char. 
+Como string es una clase, no se puede usar como constexpr. Entonces para modifiacar el codigo en tiempo de compilacion solo se puede usar char.
+Al comparar con los tiempos de ejecucion del punto 4.1, esta funcion modificada funciona en tiempo de compilacion, tal que el tiempo de ejecucion es mucho menor. 
 */

@@ -5,7 +5,7 @@ using namespace std;
 /*
     Este programa implementa una lista enlazada, con nodos con valor y una direccion de memoria.
     Uso smartpointers , especificamente sharedptr por el motivo de que se destruyen solos al salir del scope.
-    se implementaron funciones para el manejo de la lista. 
+    Se implementaron funciones para el manejo de la lista. 
     Pongo ejemplos para verificar el funcionamiento requerido.
 */
 
@@ -62,7 +62,7 @@ void insertar(shared_ptr<nodo>& nodo_insertado,int valor, int posicion){
     }
 
     if(!temp){ //si se le pasa posicion mayor al largo de la lista, lo agrego ultimo
-        cout<<"posicion fuera del rango de la lista";
+        cout<<"posicion fuera del rango de la lista. ¡Se agrega como ultima posicion! \n";
         insertar_final(nodo_insertado, valor); //inserto ultimo
         return;
     }
@@ -111,8 +111,8 @@ void print_list(shared_ptr<nodo>& head){
     cout<< " NULL"<<endl;
 }
 
-int main(){
-    shared_ptr<nodo> head= nullptr; //litsa vacia
+int main(){ //ejemplos para corroborar funcionamiento.
+    shared_ptr<nodo> head= nullptr; //lista vacia 
 
     insertar_final(head,10);
     insertar_final(head,25);
@@ -132,7 +132,18 @@ int main(){
    cout<<"lista actual, luego de insertar: \n";
    print_list(head);
 
+   insertar(head, 200, 55);
+
+   cout<<"lista actual, luego de insertar: \n";
+   print_list(head);
+
    erase(head,3);
+
+   cout<<"lista despues de borrar nodo: \n";
+   print_list(head);
+
+   
+   erase(head,40);
 
    cout<<"lista despues de borrar nodo: \n";
    print_list(head);
