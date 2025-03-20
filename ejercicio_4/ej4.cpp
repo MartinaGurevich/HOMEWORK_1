@@ -127,6 +127,5 @@ int main ()
 ejecucion de ambos difiere. El tiempo de ejecucion de la funcion tipo char* siempre es mejor al tiempo de la funcion
 de tipo str. Esto sucede porque char* no tiene administarcion de memoria adicional ni metodos internos. 
 
-Como string es una clase, no se puede usar como contexpr. Entonces para modifiacar el codigo en tiempo de compilacion solo se puede usar char.
-Este tiempo tiempo de ejecucion 0 y es mucho mas rapido ya  
+Como string es una clase, no se puede usar como contexpr. Entonces para modifiacar el codigo en tiempo de compilacion solo se puede usar char. 
 */

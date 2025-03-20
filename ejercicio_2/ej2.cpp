@@ -4,9 +4,8 @@
 #include <string>
 using namespace std;
 
-//creo un archivo.  //dsp hago un switch.
 
-enum leyendas { DEBUG=1, INFO, WARNING, ERROR, CRITICAL, TEST, SECURITY}; //AGREGO MARTINA DE MANERA HARDCODEADA
+enum leyendas { DEBUG=1, INFO, WARNING, ERROR, CRITICAL, TEST, SECURITY}; //AGREGO TEST y SECURITY DE MANERA HARDCODEADA
 
 constexpr array<const char*,7> leyendasStrings = {
     "DEBUG",
@@ -19,9 +18,8 @@ constexpr array<const char*,7> leyendasStrings = {
 
 };
 
-//que el usuario elija la opcion
+//funcion para que el usuario elija el nivel de severidad
 void opciones_severidad(){
-    //usuario elige el nivel de severidad
     cout<<"Opciones del NIvel de Severidad:" << "\n";
     for(size_t i=0; i<leyendasStrings.size(); i++){
         cout<< i+1 <<"-"<< leyendasStrings [i]<< "\n";
@@ -148,8 +146,6 @@ int main(){
     }
     return 0;
 }
-
-//me falta el ultimo punto
 
 
 
