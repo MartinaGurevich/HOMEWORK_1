@@ -9,7 +9,8 @@ using namespace std;
     El usuario puede seleccionar su nivel de severidad, escribir un mensaje y este se guardara en el archivo "Log.txt".
     - en caso de ERROR, el usuario ingresa el mesaje de error, en que archivo ocurrio y en que linea del mismo
     - En caso de SECURITY se ingresa el nombre de usuario. 
-    - Finalmente si se ingresa un nivel o argumento invalido, el programa maneja el error y pide que lo ingrese nuevamente.
+    - Finalmente si se ingresa un nivel o argumento invalido, el programa maneja el error y pide que lo ingrese nuevamente. Si se selecciona TEST, este lanza un error en runtime.
+
 
 */
 enum leyendas { DEBUG=1, INFO, WARNING, ERROR, CRITICAL, TEST, SECURITY}; //defino los niveles de severidad con numero enteros y luego AGREGO TEST y SECURITY DE MANERA HARDCODEADA
@@ -80,6 +81,7 @@ void logMessage(string& mensaje, string& nombre_usuario){
     logfile.close();
 }
 
+//Funcion que maneja la entrada de mensajes 
 void logMessage(string& mensaje, leyendas nivel) {
     ofstream logfile("Log.txt", ios::app);
     if (!logfile){
@@ -129,7 +131,7 @@ int main(){
                     logMessage(mensaje, usuario);
                     break;
                 case TEST:
-                    throw runtime_error(" Error CRITICAL en tiempo de ejecucion desde test.");
+                    throw runtime_error(" Error CRITICAL en tiempo de ejecucion desde test."); //manejo de error en runtime.
                 default:
                     logMessage(mensaje, static_cast<leyendas>(seleccion));
                     break;
@@ -138,10 +140,10 @@ int main(){
         catch(runtime_error& e){
             ofstream logfile("Log.txt", ios::app);
             if (logfile){
-                logfile<<"["<< leyendasStrings[CRITICAL -1]<<"] <"<<e.what()<<">"<< endl;
+                logfile<<"["<< leyendasStrings[CRITICAL -1]<<"] <"<<e.what()<<">"<< endl; //muestro el error en log 
                 logfile.close();
            }
-           cerr<< "ERROR CRITICO : " <<e.what()<< endl;
+           cerr<< "ERROR CRITICO : " <<e.what()<< endl; //sale del programa
            return 1;
         }
         
