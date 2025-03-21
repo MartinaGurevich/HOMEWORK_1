@@ -128,17 +128,23 @@ int main(){
                 case SECURITY:
                     logMessage(mensaje, usuario);
                     break;
+                case TEST:
+                    throw runtime_error(" Error CRITICAL en tiempo de ejecucion desde test.");
                 default:
                     logMessage(mensaje, static_cast<leyendas>(seleccion));
                     break;
             }
         }
+        catch(runtime_error& e){
+            ofstream logfile("Log.txt", ios::app);
+            if (logfile){
+                logfile<<"["<< leyendasStrings[CRITICAL -1]<<"] <"<<e.what()<<">"<< endl;
+                logfile.close();
+           }
+           cerr<< "ERROR CRITICO : " <<e.what()<< endl;
+           return 1;
+        }
         
-        catch(const invalid_argument& e){
-            cout << e.what(); //pido nuevamente la opcion debido al invalid_argument previo.
-            cin.clear(); //limpia el estado de error de cin
-            cin.ignore(10000, '\n'); //Descarta hasta 10.000 caracteres. Y no entra en loop infinito.
-        } 
     }
     return 0;
 }
