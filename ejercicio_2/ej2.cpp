@@ -5,11 +5,11 @@
 using namespace std;
 
 /* 
-    Este programa implementa un sistema de registro con diferentes niveles de severidad.
+    Este programa implementa un sistema de registro con diferentes niveles de severidad. Utilizo la sobrecarga de funciones.
     El usuario puede seleccionar su nivel de severidad, escribir un mensaje y este se guardara en el archivo "Log.txt".
     - en caso de ERROR, el usuario ingresa el mesaje de error, en que archivo ocurrio y en que linea del mismo
     - En caso de SECURITY se ingresa el nombre de usuario. 
-    - Finalemente si se ingresa un nivel o argumento invalido, el programa maneja el error y pide que lo ingrese nuevamente.
+    - Finalmente si se ingresa un nivel o argumento invalido, el programa maneja el error y pide que lo ingrese nuevamente.
 
 */
 enum leyendas { DEBUG=1, INFO, WARNING, ERROR, CRITICAL, TEST, SECURITY}; //defino los niveles de severidad con numero enteros y luego AGREGO TEST y SECURITY DE MANERA HARDCODEADA
@@ -34,59 +34,14 @@ void opciones_severidad(){
 
 }
 
-void logMessage(const string& mensaje, int NivelSeveridad,const string& archivo="", int linea_error= -1,const string& nombre_usuario="" ){
-
-    //El usuario selecciona opcion, ingresa mensaje y se agrega al archivo log("Log.txt").
+// Funcion que registra errores enocntrados por el usuario
+void logMessage(string& mensaje, string& archivo, int& linea_codigo){
     ofstream logfile("Log.txt", ios::app);
     if (!logfile){
         cerr<<"nos se puede abrir el archivo. \n";
         return;
     }
-    
-    string nivel;
-    switch (NivelSeveridad)
-    {
-        case DEBUG:
-            nivel="DEBUG";
-            break;
-        case INFO:
-            nivel="INFO";
-            break;
-        case WARNING:
-            nivel="WARNING";
-            break;
-        case ERROR:
-            nivel="ERROR";
-            break;
-        case CRITICAL:
-            nivel="CRITICAL";
-            break;
-        case TEST:
-            nivel="TEST";
-            break;
-        case SECURITY:
-            nivel="SECURITY";
-            break;
-        default:
-        cerr<< "NO es valido este nivel de severidad";
-            return;
-    }
-    logfile<<"[" <<nivel<< "]<"<< mensaje <<">" ;
-
-    if(NivelSeveridad==4){
-        logfile<< " - <Archivo: "<< archivo << ", Linea: "<< linea_error<<">";
-    }
-    if(NivelSeveridad==7){
-        logfile<< " - < Nombre de usuario: "<< nombre_usuario<<">";
-    }
-    logfile<< "\n"; 
-    logfile.close();
-}
-
-// Funcion que registra errores enocntrados por el usuario
-void log_message_error(string& mensaje, string& archivo, int& linea_codigo){
-    
-    cout<<"ingrese su mensaje: ";
+    cout<<"ingrese su mensaje de error: ";
     cin.ignore(); //no hay problemas para la proxima entrada 
     getline(cin, mensaje);
 
@@ -101,19 +56,42 @@ void log_message_error(string& mensaje, string& archivo, int& linea_codigo){
     }
     
     cin.ignore();// limpia bufer
+
+    logfile<< "[" <<leyendasStrings[static_cast<leyendas>(ERROR) - 1]<< "] <" << mensaje << "> - <Archivo: "<< archivo << ", Linea: "<< to_string(linea_codigo) <<">" << endl;
+    logfile.close();
 }
 
 
 // Funcion que permite registar mensaje de "Acceso de Usuario"
-void log_acceso_usuario(string& mensaje, string& nombre_usuario){
+void logMessage(string& mensaje, string& nombre_usuario){
+    ofstream logfile("Log.txt", ios::app);
+    if (!logfile){
+        cerr<<"nos se puede abrir el archivo. \n";
+        return;
+    }
     cout<< "ingrese su mensaje de acceso: ";
     cin.ignore(); //limpia bufer y permite que getline funcione bien 
     getline(cin, mensaje);
 
     cout<<"ingrese el nombre de usuario: ";
     getline(cin, nombre_usuario);
-    
 
+    logfile<< "[" << leyendasStrings[static_cast<leyendas>(SECURITY) - 1]<< "] <" << mensaje << "> - < Nombre de usuario: "<< nombre_usuario <<">" << endl;
+    logfile.close();
+}
+
+void logMessage(string& mensaje, leyendas nivel) {
+    ofstream logfile("Log.txt", ios::app);
+    if (!logfile){
+        cerr<<"nos se puede abrir el archivo. \n";
+        return;
+    }
+    cout<< "ingrese su mensaje: ";
+    cin.ignore(); //limpia bufer y permite que getline funcione bien 
+    getline(cin, mensaje);
+
+    logfile<<"[" <<leyendasStrings[nivel-1]<< "] <"<< mensaje <<">" << endl;
+    logfile.close();
 }
 
 int main(){
@@ -125,43 +103,37 @@ int main(){
         try{ //manejo de errores
             opciones_severidad();
 
-            while(true){ //MANEJO DE ENTRADAS INCORRECTAS
-                cout<< "Seleccione nivel de severidad (para salir 0): ";
-                if(cin>>seleccion){
-                    if(seleccion >= 0 && seleccion <= leyendasStrings.size()){
-                        break; // el numero es valido
-                    } else{
-                        cout<< "¡OPCION INVALIDA! Intente nuevamente.\n"; 
-                    }
-                }else{
-                    cout<<"¡ENTRADA INVALIDA, Ingrese un numero.\n";//el usuario no ingreso un int
-                    cin.clear(); //limpia estado de error.
-                    cin.ignore(10000, '\n');
-                }
-            }
+            while(true){ //MANEJO DE ENTRADAS INCORRECTAS                        
+                 cout<< "Seleccione nivel de severidad (para salir 0): ";
+                 if(cin>>seleccion){
+                     if(seleccion >= 0 && seleccion <= leyendasStrings.size()){
+                         break; // el numero es valido
+                     } else{
+                         cout<< "¡OPCION INVALIDA! Intente nuevamente.\n"; 
+                     }
+                 }else{
+                     cout<<"¡ENTRADA INVALIDA, Ingrese un numero.\n";//el usuario no ingreso un int
+                     cin.clear(); //limpia estado de error.
+                     cin.ignore(10000, '\n');
+                 }
+             }
 
 
             if(seleccion==0)break;
             
-            //casos ERROR y SECURITY.
-            if (seleccion==4){
-                log_message_error(mensaje, archivo, linea_error);
-                logMessage(mensaje,seleccion, archivo, linea_error);
-                continue;
-            }
-            if(seleccion== 7){
-                log_acceso_usuario(mensaje, usuario);
-                logMessage(mensaje, seleccion,archivo,linea_error, usuario); 
-                continue;
-            }
-
-            else{ //para otro nivel de severidad, pido mensaje
-                cin.ignore(); //limpio buffer antes de getline
-                cout<< "ingrese su mensaje: ";
-                getline(cin,mensaje);
-                logMessage(mensaje, seleccion); 
+            switch (seleccion) {
+                case ERROR:
+                    logMessage(mensaje, archivo, linea_error);
+                    break;
+                case SECURITY:
+                    logMessage(mensaje, usuario);
+                    break;
+                default:
+                    logMessage(mensaje, static_cast<leyendas>(seleccion));
+                    break;
             }
         }
+        
         catch(const invalid_argument& e){
             cout << e.what(); //pido nuevamente la opcion debido al invalid_argument previo.
             cin.clear(); //limpia el estado de error de cin
